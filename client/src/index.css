@@ -1,0 +1,34 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* form */
+
+.form-banner img {
+  height: 100%;
+  width: 100%;
+}
+.form-banner{
+  background-color: #88604A;
+}
+.form-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #88604A;
+  color: rgb(247, 240, 228);
+}
+.btn-primary{
+  background-color: beige;
+  color: #88604A;
+  font-weight: bolder;
+  border-color: #88604A;
+}
+.btn-primary:hover{
+  color: rgb(255, 255, 255);
+  background-color: #88604A;
+  border-color: #f3e9e3;
+}
