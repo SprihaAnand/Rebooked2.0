@@ -49,9 +49,10 @@ export const userRegister = createAsyncThunk(
                 instituteName,
                 website
             })
-            if(data.success){
-                toast.success(data.message)
-                window.location.replace('/lofin')
+            if(data?.success){
+                alert("User registered Successfully!")
+                // toast.success(data.message)
+                window.location.replace('/login')
             }
         } catch (error) {
             console.log(error)
