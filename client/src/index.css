@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap');
 *{
   margin: 0;
   padding: 0;
@@ -41,4 +42,35 @@
 .App{
    margin-top: 30%;
    margin-left: 45%;
+}
+.btn-logout{
+  background-color: beige;
+  color: #88604A;
+  font-weight: bolder;
+  border-color: #88604A;
+}
+
+.navbar{
+  background-color: #543310;
+  color: antiquewhite;
+}
+.nav-link,
+.navbar-brand{
+  color: antiquewhite;
+}
+.nav-link:hover{
+  color: bisque;
+}
+.navbar-brand{
+  font-family: "La Belle Aurore", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.badge{
+  background-color: beige;
+  color: #613511;
+}
+.navbar-logo img{
+  height: 20%;
+  width: 20%;
 }
