@@ -1,5 +1,4 @@
 import React from "react";
-// import { userMenu } from "./Menus/userMenu";
 import { useLocation, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "../../../styles/Layout.css";
@@ -19,7 +18,7 @@ const Sidebar = () => {
               <div
                 className={`menu-item ${location.pathname === "/" && "active"}`}
               >
-                <i className="fa-solid fa-warehouse"></i>
+                <i className="fa-solid fa-boxes-stacked"></i>
                 <Link to="/">Inventory</Link>
               </div>
               <div
@@ -27,7 +26,7 @@ const Sidebar = () => {
                   location.pathname === "/donar" && "active"
                 }`}
               >
-                <i className="fa-solid fa-hand-holding-medical"></i>
+                <i className="fa-solid fa-donate"></i>
                 <Link to="/donar">Donar</Link>
               </div>
               <div
@@ -35,8 +34,8 @@ const Sidebar = () => {
                   location.pathname === "/institute" && "active"
                 }`}
               >
-                <i className="fa-solid fa-hospital"></i>
-                <Link to="/institute">Hospital</Link>
+                <i className="fa-solid fa-school"></i>
+                <Link to="/institute">Institute</Link>
               </div>
             </>
           )}
@@ -47,7 +46,7 @@ const Sidebar = () => {
                   location.pathname === "/donar-list" && "active"
                 }`}
               >
-                <i className="fa-solid fa-warehouse"></i>
+                <i className="fa-solid fa-list-ul"></i>
                 <Link to="/donar-list">Donar List</Link>
               </div>
               <div
@@ -55,7 +54,7 @@ const Sidebar = () => {
                   location.pathname === "/institute-list" && "active"
                 }`}
               >
-                <i className="fa-solid fa-hand-holding-medical"></i>
+                <i className="fa-solid fa-university"></i>
                 <Link to="/institute-list">Institute List</Link>
               </div>
               <div
@@ -63,7 +62,7 @@ const Sidebar = () => {
                   location.pathname === "/org-list" && "active"
                 }`}
               >
-                <i className="fa-solid fa-hospital"></i>
+                <i className="fa-solid fa-city"></i>
                 <Link to="/org-list">Organisation List</Link>
               </div>
             </>
@@ -74,8 +73,8 @@ const Sidebar = () => {
                 location.pathname === "/orgnaisation" && "active"
               }`}
             >
-              <i className="fa-sharp fa-solid fa-building-ngo"></i>
-              <Link to="/orgnaisation">Orgnaisation</Link>
+              <i className="fa-solid fa-building"></i>
+              <Link to="/orgnaisation">Organisation</Link>
             </div>
           )}
           {user?.role === "institute" && (
@@ -84,7 +83,7 @@ const Sidebar = () => {
                 location.pathname === "/consumer" && "active"
               }`}
             >
-              <i className="fa-sharp fa-solid fa-building-ngo"></i>
+              <i className="fa-solid fa-users"></i>
               <Link to="/consumer">Consumer</Link>
             </div>
           )}
@@ -94,23 +93,10 @@ const Sidebar = () => {
                 location.pathname === "/donation" && "active"
               }`}
             >
-              <i className="fa-sharp fa-solid fa-building-ngo"></i>
+              <i className="fa-solid fa-hand-holding-heart"></i>
               <Link to="/donation">Donation</Link>
             </div>
           )}
-
-          {/* {userMenu.map((menu) => {
-            const isActive = location.pathname === menu.path;
-            return (
-              <div
-                className={`menu-item ${isActive && "active"}`}
-                key={menu.name}
-              >
-                <i className={menu.icon}></i>
-                <Link to={menu.path}>{menu.name}</Link>
-              </div>
-            );
-          })} */}
         </div>
       </div>
     </div>
