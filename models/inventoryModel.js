@@ -17,7 +17,7 @@ const inventorySchema = new mongoose.Schema({
     },
     donarEmail:{
         type: String,
-        required: [true, 'Donar Email is required']
+        // required: [true, 'Donar Email is required']
     },
     organisation:{
         type: mongoose.Schema.Types.ObjectId,

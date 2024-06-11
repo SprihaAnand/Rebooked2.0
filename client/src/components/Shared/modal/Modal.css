@@ -1,16 +1,19 @@
 .modal-content {
-  background-color: #AF8F6F; 
+  background-color: #74512D; 
   color: #f8f4e1; 
 }
 
 .modal-header, .modal-footer {
-  background-color: #AF8F6F; 
+  background-color: #74512D; 
   border: none;
-  border-bottom: 1px solid #3b2f2f;
+  
+}
+.modal-header{
+    border-bottom: 1px solid beige;
 }
 
 .modal-title {
-  color: #3b2f2f; 
+  color: beige; 
   font-weight: bold;
 }
 
@@ -35,9 +38,10 @@
 }
 
 .btn-secondary {
+  color: beige;
+  font-weight: 500;
   background-color: #af8f6f; /* Autumn color */
   border: 1px solid #3b2f2f;
-  color: #74512d; /* Dark coffee color */
 }
 
 .btn-secondary:hover {
@@ -48,7 +52,7 @@
 
 .btn-primary {
   background-color: #74512d; /* Autumn color */
-  border: none;
+  border: 1px solid beige;
   color: beige
 }
 

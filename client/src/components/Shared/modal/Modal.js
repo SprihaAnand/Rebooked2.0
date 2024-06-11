@@ -1,12 +1,38 @@
 import React, {useState} from 'react'
 import InputType from "./../Form/InputType";
 import './Modal.css'
+import API from "./../../../services/API";
+import { useSelector } from "react-redux";
+
 const Modal = () => {
     const [inventoryType, setInventoryType] = useState("in");
     const [bookGroup, setBookGroup] = useState("");
     const [quantity, setQuantity] = useState(0);
     const [email, setEmail] = useState("");
-   
+    const { user } = useSelector((state) => state.auth);
+
+    const handleModalSubmit = async () => {
+        try {
+          if (!bookGroup || !quantity) {
+            return alert("Please Provide All Fields");
+          }
+          const { data } = await API.post("/inventory/create-inventory", {
+            email,
+            organisation: user?._id,
+            inventoryType,
+            bookGroup,
+            quantity,
+          });
+          if (data?.success) {
+            alert("New Record Created");
+            window.location.reload();
+          }
+        } catch (error) {
+          alert(error.response.data.message);
+          console.log(error);
+          window.location.reload();
+        }
+      };
   return (
     <>
         <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -82,7 +108,7 @@ const Modal = () => {
             </div>
             <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Submit</button>
+                <button type="button" className="btn btn-primary" onClick={handleModalSubmit}>Submit</button>
             </div>
             </div>
         </div>

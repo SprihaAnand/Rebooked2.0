@@ -1,42 +1,92 @@
 const inventoryModel = require("../models/inventoryModel")
 const userModel = require('../models/userModel')
 
-const createInventoryController = async(req, res)=>{
+const createInventoryController = async (req, res) => {
     try {
-        const { email , inventoryType} = req.body;
-        //validation
-        const user = await userModel.findOne({ email });
-        if (!user) {
-          throw new Error("User Not Found");
-        }
-
-        // if(inventoryType === "in" && user.role !== "donar")
-        // {
-        //     throw new Error("Not a donar account")
-        // }
-        
-        if(inventoryType === 'out' && user.role != 'institute')
-        {
-            throw new Error('Not an Institution')
-        }
-        
-        //save record
-        const inventory = new inventoryModel(req.body)
-        await inventory.save()
-        return res.status(201).send({
-            success: true,
-            message: 'New Book Record Added'
-        })
-        
-    } catch (error) {
-        console.log(error)
-        return res.status(500).send({
+      const { email } = req.body;
+      //validation
+      const user = await userModel.findOne({ email });
+    //   if (!user) {
+    //     throw new Error("User Not Found");
+    //   }
+      // if (inventoryType === "in" && user.role !== "donar") {
+      //   throw new Error("Not a donar account");
+      // }
+      // if (inventoryType === "out" && user.role !== "hospital") {
+      //   throw new Error("Not a hospital");
+      // }
+  
+      if (req.body.inventoryType == "out") {
+        const requestedBloodGroup = req.body.bloodGroup;
+        const requestedQuantityOfBlood = req.body.quantity;
+        const organisation = new mongoose.Types.ObjectId(req.body.userId);
+        //calculate Blood Quanitity
+        const totalInOfRequestedBlood = await inventoryModel.aggregate([
+          {
+            $match: {
+              organisation,
+              inventoryType: "in",
+              bookGroup: requestedBookGroup,
+            },
+          },
+          {
+            $group: {
+              _id: "$bookGroup",
+              total: { $sum: "$quantity" },
+            },
+          },
+        ]);
+        // console.log("Total In", totalInOfRequestedBlood);
+        const totalIn = totalInOfRequestedBook[0]?.total || 0;
+        //calculate OUT Blood Quanitity
+  
+        const totalOutOfRequestedBloodGroup = await inventoryModel.aggregate([
+          {
+            $match: {
+              organisation,
+              inventoryType: "out",
+              bloodGroup: requestedBookGroup,
+            },
+          },
+          {
+            $group: {
+              _id: "$bloodGroup",
+              total: { $sum: "$quantity" },
+            },
+          },
+        ]);
+        const totalOut = totalOutOfRequestedBookGroup[0]?.total || 0;
+  
+        //in & Out Calc
+        const availableQuanityOfBookGroup = totalIn - totalOut;
+        //quantity validation
+        if (availableQuanityOfBookGroup < requestedQuantityOfBook) {
+          return res.status(500).send({
             success: false,
-            message: 'Error in Create Inventory API',
-            error
-        })
+            message: `Only ${availableQuanityOfBookGroup}ML of ${requestedBookGroup.toUpperCase()} is available`,
+          });
+        }
+        req.body.institute = user?._id;
+      } else {
+        req.body.donar = user?._id;
+      }
+  
+      //save record
+      const inventory = new inventoryModel(req.body);
+      await inventory.save();
+      return res.status(201).send({
+        success: true,
+        message: "New Book Reocrd Added",
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).send({
+        success: false,
+        message: "Errro In Create Inventory API",
+        error,
+      });
     }
-}
+  };
 
 const getInventoryController=async(req, res)=>{
     try {
