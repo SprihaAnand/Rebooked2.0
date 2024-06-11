@@ -1,9 +1,9 @@
-import React, { useState} from 'react';
-import { Link } from "react-router-dom"
-import InputType from './InputType';
-import { handleLogin, handleRegister } from '../../../services/authService';
+import React, { useState } from "react";
+import InputType from "./InputType";
+import { Link } from "react-router-dom";
+import { handleLogin, handleRegister } from "../../../services/authService";
 
-const Form = ({formType, submitBtn, formTitle }) => {
+const Form = ({ formType, submitBtn, formTitle }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("donar");
@@ -13,16 +13,29 @@ const Form = ({formType, submitBtn, formTitle }) => {
   const [website, setWebsite] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
-  
   return (
     <div>
-      <form onSubmit={(e)=>{
-          if(formType === 'login') return handleLogin(e, email, password, role)
-          else if(formType === 'register') return handleRegister(e, name, role, email, password,phone, organisationName,address, instituteName, website)
-
-      }}>
-        <h1 className='text-center'> {formTitle}</h1>
-        <hr/>
+      <form
+        onSubmit={(e) => {
+          if (formType === "login")
+            return handleLogin(e, email, password, role);
+          else if (formType === "register")
+            return handleRegister(
+              e,
+              name,
+              role,
+              email,
+              password,
+              phone,
+              organisationName,
+              address,
+              instituteName,
+              website
+            );
+        }}
+      >
+        <h1 className="text-center">{formTitle}</h1>
+        <hr />
         <div className="d-flex mb-3">
           <div className="form-check">
             <input
@@ -78,131 +91,128 @@ const Form = ({formType, submitBtn, formTitle }) => {
             </label>
           </div>
         </div>
-
         {/* switch statement */}
-        {(()=>{
+        {(() => {
           //eslint-disable-next-line
-          switch(true){
-            case formType === 'login':{
-                return (
-                  <>
-                    <InputType 
-                      labelText={'Email'}
-                      labelFor={'forEmail'}
-                      inputType={'email'}
-                      name={'email'}
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <InputType 
-                      labelText={'Password'}
-                      labelFor={'forPassword'}
-                      inputType={'password'}
-                      name={'password'}
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </>
-                );
-            }
-          case formType === 'register':{
-            return(
-              <>
-                <InputType 
-                  labelText={'Email'}
-                  labelFor={'forEmail'}
-                  inputType={'email'}
-                  name={'email'}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <InputType 
-                  labelText={'Password'}
-                  labelFor={'forPassword'}
-                  inputType={'password'}
-                  name={'password'}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                {(role === 'admin' || role === 'donar') &&( 
+          switch (true) {
+            case formType === "login": {
+              return (
+                <>
                   <InputType
-                    labelText={"Name"}
-                    labelFor={"forName"}
-                    inputType={"text"}
-                    name={"name"}
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    labelText={"email"}
+                    labelFor={"forEmail"}
+                    inputType={"email"}
+                    name={"email"}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
-                  
-                )}
-                {(role === 'organisation') && (
                   <InputType
-                    labelText={"Organisation Name"}
-                    labelFor={"fororganisationName"}
-                    inputType={"text"}
-                    name={"organisationName"}
-                    value={organisationName}
-                    onChange={(e) => setOrganisationName(e.target.value)}
-                  />  
+                    labelText={"Password"}
+                    labelFor={"forPassword"}
+                    inputType={"password"}
+                    name={"password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </>
+              );
+            }
+            case formType === "register": {
+              return (
+                <>
+                  {(role === "admin" || role === "donar") && (
+                    <InputType
+                      labelText={"Name"}
+                      labelFor={"forName"}
+                      inputType={"text"}
+                      name={"name"}
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  )}
+                  {role === "organisation" && (
+                    <InputType
+                      labelText={"Organisation Name"}
+                      labelFor={"fororganisationName"}
+                      inputType={"text"}
+                      name={"organisationName"}
+                      value={organisationName}
+                      onChange={(e) => setOrganisationName(e.target.value)}
+                    />
+                  )}
+                  {role === "institute" && (
+                    <InputType
+                      labelText={"Institute Name"}
+                      labelFor={"forInstituteName"}
+                      inputType={"text"}
+                      name={"instituteName"}
+                      value={instituteName}
+                      onChange={(e) => setInstituteName(e.target.value)}
+                    />
+                  )}
 
-                )}
-                {(role === 'institute') && (
                   <InputType
-                    labelText={"Institute Name"}
-                    labelFor={"forInstituteName"}
+                    labelText={"email"}
+                    labelFor={"forEmail"}
+                    inputType={"email"}
+                    name={"email"}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <InputType
+                    labelText={"Password"}
+                    labelFor={"forPassword"}
+                    inputType={"password"}
+                    name={"password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <InputType
+                    labelText={"website"}
+                    labelFor={"forWebsite"}
                     inputType={"text"}
-                    name={"instituteName"}
-                    value={instituteName}
-                    onChange={(e) => setInstituteName(e.target.value)}
-                  />  
-
-                )} 
-                <InputType
-                  labelText={"Website"}
-                  labelFor={"forWebsite"}
-                  inputType={"text"}
-                  name={"website"}
-                  value={website}
-                  onChange={(e) => setWebsite(e.target.value)}
-                />  
-                <InputType
-                  labelText={"Address"}
-                  labelFor={"forAddress"}
-                  inputType={"text"}
-                  name={"address"}
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                />
-                <InputType
-                  labelText={"Phone"}
-                  labelFor={"forPhone"}
-                  inputType={"text"}
-                  name={"phone"}
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-              </>
-            )
+                    name={"website"}
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                  />
+                  <InputType
+                    labelText={"Address"}
+                    labelFor={"forAddress"}
+                    inputType={"text"}
+                    name={"address"}
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
+                  <InputType
+                    labelText={"Phone"}
+                    labelFor={"forPhone"}
+                    inputType={"text"}
+                    name={"phone"}
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </>
+              );
+            }
           }
-        }
         })()}
 
-        <div className='d-flex'>
+        <div className="d-flex flex-row justify-content-between">
           {formType === "login" ? (
             <p>
-              Not registerd yet? Register
-              <Link to="/register" style={{ color: 'beige', padding: '10px' }}> Here!</Link>
+              Not registerd yet ? Register
+              <Link to="/register" className="form-link"> Here !</Link>
             </p>
           ) : (
             <p>
-              ALready registered?
-              <Link to="/login" style={{ color: 'beige', padding: '10px' }}> Login!  </Link>
+              ALready Usser Please
+              <Link to="/login" className="form-link"> Login !</Link>
             </p>
           )}
           <button className="btn btn-primary" type="submit">
             {submitBtn}
-          </button>        
-          </div>
+          </button>
+        </div>
       </form>
     </div>
   );

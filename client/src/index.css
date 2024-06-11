@@ -32,3 +32,9 @@
   background-color: #88604A;
   border-color: #f3e9e3;
 }
+.form-link{
+  color: beige;
+}
+.form-link:hover{
+  color: aliceblue;
+}
