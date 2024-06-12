@@ -1,6 +1,6 @@
 const inventoryModel = require("../models/inventoryModel")
 const userModel = require('../models/userModel')
-
+const mongoose = require("mongoose")
 const createInventoryController = async (req, res) => {
     try {
       const { email } = req.body;
@@ -17,11 +17,11 @@ const createInventoryController = async (req, res) => {
       // }
   
       if (req.body.inventoryType == "out") {
-        const requestedBloodGroup = req.body.bloodGroup;
-        const requestedQuantityOfBlood = req.body.quantity;
+        const requestedBookGroup = req.body.bookGroup;
+        const requestedQuantityOfBook = req.body.quantity;
         const organisation = new mongoose.Types.ObjectId(req.body.userId);
-        //calculate Blood Quanitity
-        const totalInOfRequestedBlood = await inventoryModel.aggregate([
+        //calculate Book Quanitity
+        const totalInOfRequestedBook = await inventoryModel.aggregate([
           {
             $match: {
               organisation,
@@ -40,7 +40,7 @@ const createInventoryController = async (req, res) => {
         const totalIn = totalInOfRequestedBook[0]?.total || 0;
         //calculate OUT Blood Quanitity
   
-        const totalOutOfRequestedBloodGroup = await inventoryModel.aggregate([
+        const totalOutOfRequestedBookGroup = await inventoryModel.aggregate([
           {
             $match: {
               organisation,
@@ -63,7 +63,7 @@ const createInventoryController = async (req, res) => {
         if (availableQuanityOfBookGroup < requestedQuantityOfBook) {
           return res.status(500).send({
             success: false,
-            message: `Only ${availableQuanityOfBookGroup}ML of ${requestedBookGroup.toUpperCase()} is available`,
+            message: `Only ${availableQuanityOfBookGroup} books of ${requestedBookGroup.toUpperCase()} are available`,
           });
         }
         req.body.institute = user?._id;
