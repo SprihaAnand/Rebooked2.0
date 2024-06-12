@@ -8,6 +8,7 @@ import ProtectedRoute from './components/Routes/ProtectedRoute';
 import PublicRoute from './components/Routes/PublicRoute';
 import Spinner from './components/Shared/Spinner';
 import Donar from "./pages/Dashboard/Donar";
+import Institute from './pages/Dashboard/Institutes';
 
 function App() {
   return (
@@ -34,6 +35,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Donar />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/institute"
+          element={
+            <ProtectedRoute>
+              <Institute/>
             </ProtectedRoute>
           }
         />
