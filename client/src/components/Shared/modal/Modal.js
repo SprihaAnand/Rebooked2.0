@@ -93,7 +93,7 @@ const Modal = () => {
               </select>
               <InputType
                 labelText={"Donar Email"}
-                labelFor={"donarEmail"}
+                labelFor={"donateEmail"}
                 inputType={"email"}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}

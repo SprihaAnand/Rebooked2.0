@@ -44,6 +44,7 @@ const HomePage = () => {
     <tr>
       <th scope="col">Genre</th>
       <th scope="col">Inventory Type</th>
+      <th scope="col">Quantity</th>
       <th scope="col">Donar Email</th>
       <th scope="col">Time & Date</th>
     </tr>
@@ -54,7 +55,7 @@ const HomePage = () => {
       <td>{record.bookGroup}</td>
       <td>{record.inventoryType}</td>
       <td>{record.quantity}</td>
-      <td>{record.donateEmail}</td>
+      <td>{record.email}</td>
       <td>{moment(record.createdAt).format('DD/MM/YYYY hh:mm A')}</td>
     </tr>
     ))}

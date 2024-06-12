@@ -6,14 +6,14 @@ const createInventoryController = async (req, res) => {
       const { email } = req.body;
       //validation
       const user = await userModel.findOne({ email });
-    //   if (!user) {
-    //     throw new Error("User Not Found");
-    //   }
+      if (!user) {
+        throw new Error("User Not Found");
+      }
       // if (inventoryType === "in" && user.role !== "donar") {
       //   throw new Error("Not a donar account");
       // }
-      // if (inventoryType === "out" && user.role !== "hospital") {
-      //   throw new Error("Not a hospital");
+      // if (inventoryType === "out" && user.role !== "institute") {
+      //   throw new Error("Not a intitute");
       // }
   
       if (req.body.inventoryType == "out") {
@@ -36,9 +36,9 @@ const createInventoryController = async (req, res) => {
             },
           },
         ]);
-        // console.log("Total In", totalInOfRequestedBlood);
+        // console.log("Total In", totalInOfRequestedBook);
         const totalIn = totalInOfRequestedBook[0]?.total || 0;
-        //calculate OUT Blood Quanitity
+        //calculate OUT Book Quanitity
   
         const totalOutOfRequestedBookGroup = await inventoryModel.aggregate([
           {
@@ -112,4 +112,30 @@ const getInventoryController=async(req, res)=>{
     }
 }
 
-module.exports = {createInventoryController, getInventoryController}
+//get donar
+const getDonarsController = async (req, res) => {
+  try {
+    const organisation = req.body.userId;
+    //find donars
+    const donorId = await inventoryModel.distinct("donar", {
+      organisation,
+    });
+    // console.log(donorId);
+    const donars = await userModel.find({ _id: { $in: donorId } });
+
+    return res.status(200).send({
+      success: true,
+      message: "Donar Record Fetched Successfully",
+      donars,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error in Donar records",
+      error,
+    });
+  }
+};
+
+module.exports = {createInventoryController, getInventoryController, getDonarsController,}
