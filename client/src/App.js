@@ -9,6 +9,7 @@ import PublicRoute from './components/Routes/PublicRoute';
 import Spinner from './components/Shared/Spinner';
 import Donar from "./pages/Dashboard/Donar";
 import Institute from './pages/Dashboard/Institutes';
+import OrganisationPage from './pages/Dashboard/OrganisationPage';
 
 function App() {
   return (
@@ -43,6 +44,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Institute/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/orgnaisation"
+          element={
+            <ProtectedRoute>
+              <OrganisationPage/>
             </ProtectedRoute>
           }
         />
