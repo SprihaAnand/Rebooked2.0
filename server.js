@@ -33,11 +33,20 @@ app.use("/api/v1/analytics", require("./routes/analyticsRoutes"))
 
 app.use("/api/v1/admin", require("./routes/adminRoutes"))
 
+<<<<<<< HEAD
 app.use(express.static(path.join(__dirname,"./client/build")))
 
 app.get('*', function(req, res){
     res.sendFile(path.join(__dirname, "./client/build/index.html"))
 })
+=======
+app.use(express.static(path.join(__dirname, './client/build')))
+
+app.get('*', function (req, res) {
+    const index = path.join(__dirname,'client', 'build', 'index.html');
+    res.sendFile(index);
+  });
+>>>>>>> 46300a3318e763b3053ad9e6c281e374816a9927
 
 const PORT = process.env.PORT || 8080;
 
