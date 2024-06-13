@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/Rebooked2.0/static/css/main.a658cc81.css",
+    "main.js": "/Rebooked2.0/static/js/main.7add4458.js",
+    "static/js/453.419a5d54.chunk.js": "/Rebooked2.0/static/js/453.419a5d54.chunk.js",
+    "static/media/novels.jpg": "/Rebooked2.0/static/media/novels.f233838d946f7c527e01.jpg",
+    "static/media/logo.png": "/Rebooked2.0/static/media/logo.0d830061c40929e921f1.png",
+    "static/media/bg1.jpg": "/Rebooked2.0/static/media/bg1.f89c69d63023e0bedce5.jpg",
+    "index.html": "/Rebooked2.0/index.html",
+    "main.a658cc81.css.map": "/Rebooked2.0/static/css/main.a658cc81.css.map",
+    "main.7add4458.js.map": "/Rebooked2.0/static/js/main.7add4458.js.map",
+    "453.419a5d54.chunk.js.map": "/Rebooked2.0/static/js/453.419a5d54.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a658cc81.css",
+    "static/js/main.7add4458.js"
+  ]
+}
