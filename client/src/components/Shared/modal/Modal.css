@@ -1,14 +1,17 @@
 .modal-content {
-  background-color: #74512D; 
+  /* background-color: #74512D;  */
+  background-color: #987070;
   color: #f8f4e1; 
 }
 
 .modal-header, .modal-footer {
-  background-color: #74512D; 
   border: none;
   
 }
-.modal-header{
+.inout {
+  color: #987070;
+}
+.modal-header text{
     border-bottom: 1px solid beige;
 }
 
@@ -18,7 +21,8 @@
 }
 
 .modal-body {
-  color: rgb(250, 235, 217);
+  color: #987070;
+  background-image: url('../../../../public/assets/images/bg1.jpg');
   font-weight: 400;
 }
 
@@ -34,30 +38,30 @@
 
 .form-select:focus {
   border-color: #af8f6f;
-  box-shadow: 0 0 5px rgba(175, 143, 111, 0.5); /* Autumn color shadow */
+  box-shadow: 0 0 5px rgba(175, 143, 111, 0.5);
 }
 
 .btn-secondary {
-  color: beige;
+  color: #F1E5D1; 
   font-weight: 500;
-  background-color: #af8f6f; /* Autumn color */
-  border: 1px solid #3b2f2f;
+  background-color: #C39898; 
+  border: 1px solid #987070; 
 }
 
 .btn-secondary:hover {
-  background-color: #74512d; /* Coffee color */
-  color: #f8f4e1;
+  background-color: #987070; 
+  color: #F1E5D1; 
   border: none;
 }
 
 .btn-primary {
-  background-color: #74512d; /* Autumn color */
-  border: 1px solid beige;
-  color: beige
+  background-color: #987070; 
+  border: 1px solid #F1E5D1; 
+  color: #F1E5D1; 
 }
 
 .btn-primary:hover {
-  background-color: #af8f6f; /* Coffee color */
-  color: #f8f4e1;
-  border: 1px solid #74512d;
+  background-color: #C39898; 
+  color: #F1E5D1;
+  border: 1px solid #987070;
 }

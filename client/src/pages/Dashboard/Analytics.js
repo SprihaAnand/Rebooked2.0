@@ -44,7 +44,7 @@ const Analytics = () => {
 
 
   return (
-    <>
+    <div className='analytics'>
       <Header />
       <div className="d-flex flex-row flex-wrap ">
         {data?.map((record, i) => (
@@ -75,8 +75,8 @@ const Analytics = () => {
           </div>
         ))}
       </div>
-      <div className="container my-3">
-        <h1 className="my-3">Recent Book Transactions</h1>
+      <div className="container continer3 my-3">
+        <h1 className="my-3 heading2">Recent Book Transactions</h1>
         <table className="table">
           <thead>
             <tr>
@@ -100,7 +100,7 @@ const Analytics = () => {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -58,7 +58,7 @@ const Modal = () => {
                     className="form-check-input"
                   />
                   <label htmlFor="in" className="form-check-label">
-                    IN
+                    <span className='inout '>IN</span>
                   </label>
                 </div>
                 <div className="form-check ms-3">
@@ -70,7 +70,7 @@ const Modal = () => {
                     className="form-check-input"
                   />
                   <label htmlFor="out" className="form-check-label">
-                    OUT
+                    <span className='inout '>OUT</span>
                   </label>
                 </div>
               </div>
