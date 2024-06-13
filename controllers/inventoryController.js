@@ -188,10 +188,36 @@ const getOrgnaisationController = async (req, res) => {
   }
 };
 
+// GET ORG for Institute
+const getOrgnaisationForInstituteController = async (req, res) => {
+  try {
+    const institute = req.body.userId;
+    const orgId = await inventoryModel.distinct("organisation", { institute });
+    //find org
+    const organisations = await userModel.find({
+      _id: { $in: orgId },
+    });
+    return res.status(200).send({
+      success: true,
+      message: "Institute Org Data Fetched Successfully",
+      organisations,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error In Institute ORG API",
+      error,
+    });
+  }
+};
+
 module.exports = {
   createInventoryController, 
   getInventoryController, 
   getDonarsController,
   getInstituteController,
-  getOrgnaisationController
+  getOrgnaisationController,
+  getOrgnaisationForInstituteController,
+
 }
