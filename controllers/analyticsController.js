@@ -8,12 +8,12 @@ const bookGroupDetailsContoller = async (req, res) => {
     const organisation = new mongoose.Types.ObjectId(req.body.userId);
     //get single book group
     await Promise.all(
-      bookGroups.map(async (bloodGroup) => {
+      bookGroups.map(async (bookGroup) => {
         //COunt TOTAL IN
         const totalIn = await inventoryModel.aggregate([
           {
             $match: {
-              bookGroup: bloodGroup,
+              bookGroup: bookGroup,
               inventoryType: "in",
               organisation,
             },
@@ -29,7 +29,7 @@ const bookGroupDetailsContoller = async (req, res) => {
         const totalOut = await inventoryModel.aggregate([
           {
             $match: {
-              bookGroup: bloodGroup,
+              bookGroup: bookGroup,
               inventoryType: "out",
               organisation,
             },
@@ -47,7 +47,7 @@ const bookGroupDetailsContoller = async (req, res) => {
 
         //PUSH DATA
         bookGroupData.push({
-          bloodGroup,
+          bookGroup,
           totalIn: totalIn[0]?.total || 0,
           totalOut: totalOut[0]?.total || 0,
           availabeBook,

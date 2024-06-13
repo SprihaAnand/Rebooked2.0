@@ -6,17 +6,8 @@ import moment from "moment";
 const Analytics = () => {
   const [data, setData] = useState([]);
   const [inventoryData, setInventoryData] = useState([]);
-  const colors = [
-    "#884A39",
-    "#C38154",
-    "#FFC26F",
-    "#4F709C",
-    "#4942E4",
-    "#0079FF",
-    "#FF0060",
-    "#22A699",
-  ];
-  //GET Book GROUP DATA
+
+  // GET Book Group Data
   const getBookGroupData = async () => {
     try {
       const { data } = await API.get("/analytics/bookGroups-data");
@@ -29,12 +20,12 @@ const Analytics = () => {
     }
   };
 
-  //lifecycle method
+  // Lifecycle method
   useEffect(() => {
     getBookGroupData();
   }, []);
 
-  //get function
+  // GET Book Records
   const getBookRecords = async () => {
     try {
       const { data } = await API.get("/inventory/get-recent-inventory");
@@ -50,36 +41,43 @@ const Analytics = () => {
   useEffect(() => {
     getBookRecords();
   }, []);
+
+
   return (
     <>
       <Header />
-      <div className="d-flex flex-row flex-wrap">
+      <div className="d-flex flex-row flex-wrap ">
         {data?.map((record, i) => (
           <div
-            className="card m-2 p-1"
+            className={`card m-2 p-1 card-${i}`}
             key={i}
-            style={{ width: "18rem", backgroundColor: `${colors[i]}` }}
+            style={{
+              width: "18rem",
+              backgroundColor: "white",
+              color: "black",
+            }}
           >
+    
             <div className="card-body">
-              <h1 className="card-title bg-light text-dark text-center mb-3">
+              <h1 className="card-title text-center mb-3">
                 {record.bookGroup}
               </h1>
               <p className="card-text">
-                Total In : <b>{record.totalIn}</b> 
+                Total In : <b>{record.totalIn}</b>
               </p>
               <p className="card-text">
-                Total Out : <b>{record.totalOut}</b> 
+                Total Out : <b>{record.totalOut}</b>
               </p>
             </div>
-            <div className="card-footer text-light bg-dark text-center">
-              Total Available : <b>{record.availabeBook}</b> 
+            <div className="card-footer text-center">
+              Total Available : <b>{record.availabeBook}</b>
             </div>
           </div>
         ))}
       </div>
       <div className="container my-3">
         <h1 className="my-3">Recent Book Transactions</h1>
-        <table className="table ">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Book Genre</th>

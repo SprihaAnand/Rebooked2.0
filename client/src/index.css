@@ -74,3 +74,42 @@
   height: 20%;
   width: 20%;
 }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.card-header {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-body {
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  padding: 30px;
+  text-align: center;
+  flex: 1;
+  font-size: 16px;
+  color: #111; /* Ensure text is readable on image backgrounds */
+}
+
+.card-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.card-footer {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.8); /* Dark background for footer */
+  color: white;
+  text-align: center;
+}
