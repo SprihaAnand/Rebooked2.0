@@ -19,15 +19,15 @@ body{
   width: 100%;
 }
 .form-banner{
-  background-color: #88604A;
+  background-image: url('../.././client/public/assets/images/bg1.jpg');
 }
 .form-container{
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #88604A;
-  color: rgb(247, 240, 228);
+  background-image: url('../.././client/public/assets/images/bg1.jpg');
+  color: #815f5f
 }
 .btn-primary{
   background-color: beige;
@@ -35,16 +35,19 @@ body{
   font-weight: bolder;
   border-color: #88604A;
 }
+.radio-form{
+  color: #815f5f;
+}
 .btn-primary:hover{
   color: rgb(255, 255, 255);
   background-color: #88604A;
   border-color: #f3e9e3;
 }
 .form-link{
-  color: beige;
+  color: #815f5f;
 }
 .form-link:hover{
-  color: aliceblue;
+  color: burlywood;
 }
 .App{
    margin-top: 30%;
@@ -56,7 +59,7 @@ body{
   font-weight: bolder;
   border-color: #88604A;
 }
-
+/* **********navbar************** */
 .navbar{
   background-color: #987070;
   color: antiquewhite;

@@ -48,7 +48,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               defaultChecked
             />
             <label htmlFor="adminRadio" className="form-check-label">
-              Donar
+              <span className ='radio-form'>Donar</span>
             </label>
           </div>
           <div className="form-check ms-2">
@@ -61,7 +61,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               onChange={(e) => setRole(e.target.value)}
             />
             <label htmlFor="adminRadio" className="form-check-label">
-              Admin
+              <span className ='radio-form'>Admin</span>
             </label>
           </div>
           <div className="form-check ms-2">
@@ -74,7 +74,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               onChange={(e) => setRole(e.target.value)}
             />
             <label htmlFor="instituteRadio" className="form-check-label">
-              Institute
+              <span className ='radio-form'>Institute</span>
             </label>
           </div>
           <div className="form-check ms-2">
@@ -87,7 +87,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               onChange={(e) => setRole(e.target.value)}
             />
             <label htmlFor="organisationRadio" className="form-check-label">
-              Organisation
+              <span className ='radio-form'>Organisation</span>
             </label>
           </div>
         </div>
