@@ -1,0 +1,103 @@
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 100;
+    letter-spacing: 3px;
+  
+}
+
+
+.learn:hover{
+  cursor: pointer;
+}
+
+.arrow:hover{
+ 
+  text-align: center;
+  cursor: pointer;
+
+}
+
+.intro-header {
+    padding-top: 10px; 
+    padding-bottom: 20px;
+    padding-left: 20px;
+    text-align: left;
+    color: #f8f8f8;
+    background:linear-gradient(
+        rgba(108, 159, 240, 0.7),
+        #987070
+    ),  url("../../../public/assets/images/novels.jpg");
+  background-size: cover;
+  height: 100vh;
+  
+}
+
+.intro-message {
+    position: relative;
+    padding-top: 10%;
+    padding-bottom: 20%;
+}
+
+.intro-message > h1 {
+    font-size: 3em;
+    font-weight: 400;
+  text-align: left;
+ 
+}
+
+.intro-message > h3 {
+    margin-top: 50;
+    font-size: 2.5em;
+    font-weight: 150;
+    letter-spacing: 4;
+    text-align: left;
+ 
+}
+
+.intro-message > h4 {
+    margin-top: 200;
+    font-size: 1.25em;
+    font-weight: 400;
+    letter-spacing: 2;
+ 
+}
+.landImg{
+  
+  margin-left: 15%;
+  margin-top: 5%;
+  
+}
+
+.button{
+  margin-top: 50px;
+  margin-bottom: 20px;
+  background: #AFDAA6;
+  border: none;
+  border-radius: 0%;
+  border-bottom: 6px solid #99bc91;
+  padding: 15px 15px 15px 15px;
+  
+}
+
+
+.button:hover{
+  margin-top: 55px;
+  height: 95%;
+  background: #AFDAA6;
+  border-bottom: 0px solid #AFDAA6;
+  border-radius: 0%;
+  padding: 21px 15px 15px 15px;
+  
+}
+
+
+.highlight{
+  
+  color: #AFDAA6;
+  font-style: italic;
+  
+}
