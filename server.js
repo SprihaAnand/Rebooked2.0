@@ -33,21 +33,12 @@ app.use("/api/v1/analytics", require("./routes/analyticsRoutes"))
 
 app.use("/api/v1/admin", require("./routes/adminRoutes"))
 
-// Serve static files from the React app
-const buildPath = path.join(__dirname, './client/build');
-console.log("Serving static files from: " + buildPath);
-app.use(express.static(buildPath));
+app.use(express.static(path.join(__dirname, './client/build')))
 
 app.get('*', function (req, res) {
-    const index = path.join(__dirname, 'client', 'build', 'index.html');
-    console.log("Index file path: " + index);
-    res.sendFile(index, function (err) {
-        if (err) {
-            console.error("Error sending index.html:", err);
-            res.status(500).send(err);
-        }
-    });
-});
+    const index = path.join(__dirname,'client', 'build', 'index.html');
+    res.sendFile(index);
+  });
 
 const PORT = process.env.PORT || 8080;
 
