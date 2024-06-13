@@ -1,6 +1,6 @@
 const express = require('express')
 const authMiddelware = require('../middleware/authMiddleware')
-const { createInventoryController, getInventoryController, getDonarsController, getInstituteController, getOrgnaisationController, getOrgnaisationForInstituteController, getInventoryInstituteController } = require('../controllers/inventoryController')
+const { createInventoryController, getInventoryController, getDonarsController, getInstituteController, getOrgnaisationController, getOrgnaisationForInstituteController, getInventoryInstituteController, getRecentInventoryController } = require('../controllers/inventoryController')
 const authMiddleware = require('../middleware/authMiddleware')
 const router = express.Router()
 
@@ -10,6 +10,9 @@ router.post('/create-inventory', authMiddelware, createInventoryController)
 
 //get all book records || GET
 router.get('/get-inventory', authMiddelware, getInventoryController)
+
+//get recent records
+router.get('/get-recent-inventory', authMiddelware, getRecentInventoryController)
 
 //get institute book records || GET
 router.post('/get-inventory-institute', authMiddelware, getInventoryInstituteController)

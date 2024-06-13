@@ -16,20 +16,20 @@ const Analytics = () => {
     "#FF0060",
     "#22A699",
   ];
-  //GET BLOOD GROUP DATA
+  //GET Book GROUP DATA
   const getBookGroupData = async () => {
     try {
       const { data } = await API.get("/analytics/bookGroups-data");
       if (data?.success) {
         setData(data?.bookGroupData);
-        // console.log(data);
+        console.log(data);
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  //lifrecycle method
+  //lifecycle method
   useEffect(() => {
     getBookGroupData();
   }, []);
@@ -65,14 +65,14 @@ const Analytics = () => {
                 {record.bookGroup}
               </h1>
               <p className="card-text">
-                Total In : <b>{record.totalIn}</b> (ML)
+                Total In : <b>{record.totalIn}</b> 
               </p>
               <p className="card-text">
-                Total Out : <b>{record.totalOut}</b> (ML)
+                Total Out : <b>{record.totalOut}</b> 
               </p>
             </div>
             <div className="card-footer text-light bg-dark text-center">
-              Total Available : <b>{record.availabeBlood}</b> (ML)
+              Total Available : <b>{record.availabeBook}</b> 
             </div>
           </div>
         ))}
