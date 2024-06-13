@@ -10,7 +10,9 @@ import Spinner from './components/Shared/Spinner';
 import Donar from "./pages/Dashboard/Donar";
 import Institute from './pages/Dashboard/Institutes';
 import OrganisationPage from './pages/Dashboard/OrganisationPage';
-
+import Consumer from './pages/Dashboard/Consumer';
+import Donation from './pages/Donation'
+import Analytics from './pages/Dashboard/Analytics';
 function App() {
   return (
     <>
@@ -52,6 +54,30 @@ function App() {
           element={
             <ProtectedRoute>
               <OrganisationPage/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/consumer"
+          element={
+            <ProtectedRoute>
+              <Consumer/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/donation"
+          element={
+            <ProtectedRoute>
+              <Donation/>
+            </ProtectedRoute>
+          }
+        />
+      <Route
+          path="/analytics"
+          element={
+            <ProtectedRoute>
+              <Analytics/>
             </ProtectedRoute>
           }
         />

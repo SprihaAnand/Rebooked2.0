@@ -212,6 +212,30 @@ const getOrgnaisationForInstituteController = async (req, res) => {
   }
 };
 
+// GET institute book RECORS
+const getInventoryInstituteController = async (req, res) => {
+  try {
+    const inventory = await inventoryModel
+      .find(req.body.filters)
+      .populate("donar")
+      .populate("institute")
+      .populate("organisation")
+      .sort({ createdAt: -1 });
+    return res.status(200).send({
+      success: true,
+      messaage: "get institute comsumer records successfully",
+      inventory,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error In Get consumer Inventory",
+      error,
+    });
+  }
+};
+
 module.exports = {
   createInventoryController, 
   getInventoryController, 
@@ -219,5 +243,6 @@ module.exports = {
   getInstituteController,
   getOrgnaisationController,
   getOrgnaisationForInstituteController,
+  getInventoryInstituteController
 
 }
