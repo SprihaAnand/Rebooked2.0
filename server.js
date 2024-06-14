@@ -17,7 +17,9 @@ connectDB();
 const app = express()
 
 //middleware
-app.use(cors())
+app.use(cors({
+    origin: '*',  // Allow all origins; you might want to restrict this in a production environment
+  }));
 app.use(express.json())
 app.use(morgan('dev'))
 
