@@ -44,6 +44,6 @@ app.get('*', function(req, res){
 const PORT = process.env.PORT || 8080;
 
 //listen 
-app.listen(PORT, ()=>{
+app.listen(PORT,'0.0.0.0', ()=>{
     console.log(`Node server running in Mode : ${process.env.DEV_MODE} at PORT ${process.env.PORT}`.bgCyan.white)
 })
