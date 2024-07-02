@@ -6,7 +6,7 @@
 
 Welcome to **Rebooked**, a project dedicated to providing cheaper second-hand books to those who may not have the financial means to purchase new books. We understand that buying new books can be expensive, and not everyone can afford to do so. That’s why we have created a platform where individuals can donate their gently used books, and those in need can purchase them at an affordable price. By doing so, we hope to promote literacy, improve access to information, and create a more equitable society.
 
-## Table of Contents
+## 📑 Table of Contents
 
 - [About the Project](#about-the-project)
 - [Sustainable Development Goals](#sustainable-development-goals)
@@ -23,13 +23,13 @@ Welcome to **Rebooked**, a project dedicated to providing cheaper second-hand bo
 - [License](#license)
 - [Contact](#contact)
 
-## About the Project
+## 📖 About the Project
 
 Without a middleman or inventory, we want to build a platform that connects people who want to trade, buy, sell, or donate books. By collaborating with school and college administrations, we seek to spread the word about the accessibility of low-cost books and emphasize the value of education and literacy. By making books more accessible and inexpensive, we hope to increase literacy rates and equip kids with the skills they need to excel in the classroom and beyond. Our platform encourages a more ecologically friendly approach to book consumption while being a cost-effective and sustainable means to provide access to books. We intend to reduce waste by enticing people to reuse and recycle books rather than buy new ones, encouraging everyone to live in a sustainable future.
 
 Overall, we are enthusiastic about the project's potential effects, the chance to increase disadvantaged school children's access to affordable books, and the opportunity to enhance their education. We want to leave a positive legacy that people and communities can take advantage of for years to come.
 
-## Sustainable Development Goals
+## 🌍 Sustainable Development Goals
 
 ### 1. No Poverty
 
@@ -51,7 +51,7 @@ As a result of inequitable resource distribution, poverty has widened the gap be
 
 With our application, we will assist those in need while preserving existing resources. In addition, instilling hope in them by informing them about the various schemes and opportunities offered by the government will encourage them to lead a better life. Participation in quests will also enliven social inequality. Having them publicly indulged will disintegrate the intersection of poverty and inequality.
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 - **Frontend:** React.js, Figma
 - **Backend:** Node.js, Express.js
@@ -59,9 +59,9 @@ With our application, we will assist those in need while preserving existing res
 - **API Testing:** Postman
 - **Deployment:** Render
 
-## Features
+## ✨ Features
 
-### Home
+### 🏠 Home
 
 #### Donor
 
@@ -90,34 +90,34 @@ With our application, we will assist those in need while preserving existing res
 - **Donor List:** List of all donors associated with your organization.
 - **Institute List:** List of institutes associated with your organization.
 
-### Analytics
+### 📊 Analytics
 
 - **Book Types:** View in the form of cards all the book types, how many books are donated by donors in that type, how many books were given to NGOs and organizations in that type, and currently available books of that type.
 - **Recent Transactions:** View details of the last 5 transactions, including book type, quantity, donor email, time, and date, and whether the book was donated or given to NGOs (i.e., inventory type).
 
-### Navbar
+### 🚀 Navbar
 
 - **Logo and Name**
 - **Welcome Message:** Displays your name and badge that displays your role.
 - **Options:** View analytics and home.
 - **Logout Button**
 
-## UI/UX Design
+## 🎨 UI/UX Design
 
 - Modern design and aesthetic color palette.
 - Figma prototyping followed by extensive design practices.
 
-## Future Plans
+## 🔮 Future Plans
 
 - Add a dark mode.
 - Contact potential organizations that can benefit from this web app.
 - Implement the project at my college level followed by outer organizations.
 
-## Deployment
+## 🚢 Deployment
 
-The project is deployed on render.
+The project is deployed on Render.
 
-## Screenshots
+## 📷 Screenshots
 ![Screenshot 2024-07-02 133749](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/a08c5689-10d2-43a4-abd1-0860e907ccbc)
 
 ![Screenshot 2024-07-02 133802](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/4b1cd150-e0c8-48fe-85cd-8f0e99320016)
