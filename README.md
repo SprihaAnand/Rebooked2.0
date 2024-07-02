@@ -69,6 +69,29 @@ With our application, we will assist those in need while preserving existing res
   <img src="https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/gkq3dkkfkec8edd6fuay" alt="Render" height="50px"/>
 </p>
 
+## 📗 Third-Party Libraries
+
+| Library | Description | Logo |
+| --- | --- | --- |
+| **@emotion/core** | CSS-in-JS library for styling React components | ![Emotion](https://img.shields.io/badge/emotion-CC6677?style=for-the-badge&logo=emotion&logoColor=white) |
+| **@emotion/react** | Core library for Emotion to use with React | ![Emotion](https://img.shields.io/badge/emotion-CC6677?style=for-the-badge&logo=emotion&logoColor=white) |
+| **@emotion/styled** | Styled components for Emotion | ![Emotion](https://img.shields.io/badge/emotion-CC6677?style=for-the-badge&logo=emotion&logoColor=white) |
+| **@reduxjs/toolkit** | Standard way to write Redux logic | ![Redux](https://img.shields.io/badge/redux_toolkit-764ABC?style=for-the-badge&logo=redux&logoColor=white) |
+| **@testing-library/jest-dom** | Custom jest matchers for asserting on DOM nodes | ![Testing Library](https://img.shields.io/badge/testing_library-000000?style=for-the-badge&logo=testing-library&logoColor=white) |
+| **@testing-library/react** | Simple and complete React DOM testing utilities | ![Testing Library](https://img.shields.io/badge/testing_library-000000?style=for-the-badge&logo=testing-library&logoColor=white) |
+| **@testing-library/user-event** | Fire events to simulate user interactions | ![Testing Library](https://img.shields.io/badge/testing_library-000000?style=for-the-badge&logo=testing-library&logoColor=white) |
+| **axios** | Promise-based HTTP client for making API requests | ![Axios](https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white) |
+| **moment** | Parse, validate, manipulate, and display dates in JavaScript | ![Moment.js](https://img.shields.io/badge/moment.js-3776AB?style=for-the-badge&logo=moment.js&logoColor=white) |
+| **react** | JavaScript library for building user interfaces | ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) |
+| **react-dom** | Serves as the entry point of the DOM-related rendering paths | ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) |
+| **react-icons** | Include popular icons in your React projects easily | ![React Icons](https://img.shields.io/badge/react_icons-000000?style=for-the-badge&logo=react-icons&logoColor=white) |
+| **react-redux** | Official React bindings for Redux | ![Redux](https://img.shields.io/badge/React_Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white) |
+| **react-router-dom** | DOM bindings for React Router | ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) |
+| **react-scripts** | Configuration and scripts for Create React App | ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) |
+| **react-spinners** | A collection of loading spinner components for React | ![React Spinners](https://img.shields.io/badge/react_spinners-000000?style=for-the-badge&logo=react&logoColor=white) |
+| **react-toastify** | React notification library to notify users | ![React Toastify](https://img.shields.io/badge/react_toastify-FFDD57?style=for-the-badge&logo=react-toastify&logoColor=black) |
+| **web-vitals** | Measure performance metrics in your application | ![Web Vitals](https://img.shields.io/badge/Web_Vitals-4CAF50?style=for-the-badge&logo=web-vitals&logoColor=white) |
+
 
 ## ✨ Features
 
