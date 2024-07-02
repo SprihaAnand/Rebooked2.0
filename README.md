@@ -63,10 +63,10 @@ With our application, we will assist those in need while preserving existing res
   <img src="https://img.icons8.com/color/48/000000/react-native.png" alt="React.js" />
   <img src="https://img.icons8.com/color/48/000000/figma--v1.png" alt="Figma" />
   <img src="https://img.icons8.com/color/48/000000/nodejs.png" alt="Node.js" />
-  <img src="https://blog.amt.in/wp-content/uploads/2017/12/e16da876-c2fd-4eb8-ae72-4b193c534938-Edited.png" alt="Express.js" />
+  <img src="https://blog.amt.in/wp-content/uploads/2017/12/e16da876-c2fd-4eb8-ae72-4b193c534938-Edited.png" alt="Express.js" height="50px" />
   <img src="https://img.icons8.com/color/48/000000/mongodb.png" alt="MongoDB" />
-  <img src="https://images.squarespace-cdn.com/content/v1/57c649658419c2380d1947be/1530749877859-XD498I2YH1GZ00CUYXQ5/Artboard+1.png?format=1500w" alt="Postman" />
-  <img src="https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/gkq3dkkfkec8edd6fuay" alt="Render" />
+  <img src="https://images.squarespace-cdn.com/content/v1/57c649658419c2380d1947be/1530749877859-XD498I2YH1GZ00CUYXQ5/Artboard+1.png?format=1500w" height="50px" alt="Postman" />
+  <img src="https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/gkq3dkkfkec8edd6fuay" alt="Render" height="50px"/>
 </p>
 
 
