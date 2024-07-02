@@ -1,4 +1,4 @@
-![Screenshot 2024-07-02 133749](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/ffd1c041-cce3-4913-bc52-39e380406b3d)![Screenshot 2024-07-02 133847](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/e7a7cb78-f337-43f3-a0c2-c1e3cffae682)# 📚 Rebooked
+# 📚 Rebooked
 
 Welcome to **Rebooked**, a project dedicated to providing cheaper second-hand books to those who may not have the financial means to purchase new books. We understand that buying new books can be expensive, and not everyone can afford to do so. That’s why we have created a platform where individuals can donate their gently used books, and those in need can purchase them at an affordable price. By doing so, we hope to promote literacy, improve access to information, and create a more equitable society.
 
