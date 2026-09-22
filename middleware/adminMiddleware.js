@@ -1,22 +1,11 @@
-const userModel = require("../models/userModel");
-module.exports = async (req, res, next) => {
-  try {
-    const user = await userModel.findById(req.body.userId);
-    //check admin
-    if (user?.role !== "admin") {
-      return res.status(401).send({
-        success: false,
-        message: "Auth Fialed",
-      });
-    } else {
-      next();
-    }
-  } catch (error) {
-    console.log(error);
-    return res.status(401).send({
+const { getUserRole, CANONICAL_ROLES } = require("../config/roles");
+
+module.exports = (req, res, next) => {
+  if (getUserRole(req.auth?.user) !== CANONICAL_ROLES.ADMIN) {
+    return res.status(403).send({
       success: false,
-      message: "Auth Failed, ADMIN API",
-      error,
+      message: "Administrator access is required",
     });
   }
+  return next();
 };

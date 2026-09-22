@@ -1,13 +1,17 @@
-const mongoose = require('mongoose')
-const colors = require("colors")
+const mongoose = require("mongoose");
 
-const connectDB = async() => {
-    try{
-        await mongoose.connect(process.env.MONGO_URL)
-        console.log(`Connected to mongodb database ${mongoose.connection.host}`.bgGreen.white)
-    } catch(error){
-        console.log(`Mongodb Database Error ${error}`.bgRed.white)
-    }
+async function connectDB() {
+  const mongoUrl = process.env.MONGO_URL;
+  if (!mongoUrl) {
+    throw new Error("MONGO_URL is required before starting the server");
+  }
+
+  mongoose.set("strictQuery", true);
+  await mongoose.connect(mongoUrl, {
+    serverSelectionTimeoutMS: 10000,
+  });
+  console.log(`Connected to MongoDB at ${mongoose.connection.host}`);
+  return mongoose.connection;
 }
 
-module.exports = connectDB
+module.exports = connectDB;

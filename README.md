@@ -1,194 +1,119 @@
-<p align="center">
-  <img src="https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/050334bf-6b32-4aca-929a-c9680ff70753" alt="logo" style="border-radius: 50%; width: 200px; height: 200px;">
-</p>
+# Rebooked
 
-# 📚 Rebooked
+Rebooked is a full-stack book-donation platform that connects individual donors with schools and NGOs. Donors publish book collections; recipient organisations find suitable listings, reserve the exact quantity they need, and coordinate pickup through a traceable claim lifecycle.
 
-Welcome to **Rebooked**, a project dedicated to providing cheaper second-hand books to those who may not have the financial means to purchase new books. We understand that buying new books can be expensive, and not everyone can afford to do so. That’s why we have created a platform where individuals can donate their gently used books, and those in need can purchase them at an affordable price. By doing so, we hope to promote literacy, improve access to information, and create a more equitable society.
+## What it does
 
-## 📑 Table of Contents
+- Email/password registration and login, plus Google Identity Services sign-in.
+- Persistent, revocable Mongo-backed browser sessions stored in HTTP-only cookies.
+- Role-based access for donors, NGOs, schools, and administrators.
+- Donor listings with book details, condition, quantity, photos, and private pickup information.
+- Searchable/filterable recipient catalogue with quantity-aware reservations.
+- Claim workflow: accepted → pickup scheduled → collected, with safe cancellation and restored stock.
+- Donor and recipient dashboards, in-app notifications, profile editing, and admin oversight.
+- Privacy by default: public listings expose only the donor’s display name and pickup area. Contact/pickup details are shared only with the accepted recipient.
 
-- [About the Project](#about-the-project)
-- [Sustainable Development Goals](#sustainable-development-goals)
-- [Tech Stack](#tech-stack)
-- [Features](#features)
-  - [Home](#home)
-  - [Analytics](#analytics)
-  - [Navbar](#navbar)
-- [UI/UX Design](#uiux-design)
-- [Future Plans](#future-plans)
-- [Deployment](#deployment)
-- [Screenshots](#screenshots)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+## Roles and workflow
 
-## 📖 About the Project
+| Role | Primary actions |
+| --- | --- |
+| Donor | Create/edit/withdraw listings, see incoming claims, confirm a completed handover. |
+| NGO / School | Browse available books, reserve a quantity, view secure pickup details, cancel a claim if plans change. |
+| Administrator | Review platform metrics, users, and listings; suspend accounts without deleting history. |
 
-Without a middleman or inventory, we want to build a platform that connects people who want to trade, buy, sell, or donate books. By collaborating with school and college administrations, we seek to spread the word about the accessibility of low-cost books and emphasize the value of education and literacy. By making books more accessible and inexpensive, we hope to increase literacy rates and equip kids with the skills they need to excel in the classroom and beyond. Our platform encourages a more ecologically friendly approach to book consumption while being a cost-effective and sustainable means to provide access to books. We intend to reduce waste by enticing people to reuse and recycle books rather than buy new ones, encouraging everyone to live in a sustainable future.
+Reservations are atomic. A recipient cannot reserve more copies than remain, and a cancelled reservation restores its quantity. Existing legacy roles (`donar`, `organisation`, and `institute`) are recognized as donor, NGO, and school respectively.
 
-Overall, we are enthusiastic about the project's potential effects, the chance to increase disadvantaged school children's access to affordable books, and the opportunity to enhance their education. We want to leave a positive legacy that people and communities can take advantage of for years to come.
+## Stack
 
-## 🌍 Sustainable Development Goals
+- React 18 / Create React App
+- Express and Mongoose
+- MongoDB
+- Google Identity Services + server-side Google ID-token verification
+- Cookie sessions, Helmet, CORS allow-listing, CSRF protection, and rate limiting
 
-### 1. No Poverty
+## Local setup
 
-Abject poverty perpetuates a disproportionate level of poverty, leading to ignorance. Especially in a developing country like India, factors like overpopulation, lack of awareness in rural areas, and disparity in the availability of resources contribute to exacerbating poverty.
+Prerequisites: Node.js 18+ and a MongoDB instance (local MongoDB or MongoDB Atlas).
 
-Our application is a unique solution for eradicating poverty. The resources we intend to provide will not only improve their plight but also make their lives more secure. It will ensure that basic amenities are provided free of charge and conveniently at their location. Aids in the form of food, clothing, and essentials for survival will allow them to work for their betterment.
+1. Create environment files from the examples.
 
-### 2. Quality Education
+   ```powershell
+   Copy-Item .env.example .env
+   Copy-Item client\.env.example client\.env
+   ```
 
-There are hundreds of millions of children around the world who do not have access to basic education. The majority of poor households spend their income on necessities like food and fuel, and education is marginalized. Moreover, parents who have not received a proper education tend to underestimate the value of education and hesitate to spend money on schools.
+2. In `.env`, set a real `MONGO_URL` and a high-entropy `JWT_SECRET`. For local development, the supplied `CLIENT_URL=http://localhost:3000` and cookie settings are suitable.
 
-As a result of incorporating education quests in our application, we developed an idea for educating those in need. In quests, we strive to enlighten the deprived section's future positively. They will be able to shape their identities as confident, literate individuals if they are educated and provided with the requisite resources.
+3. Install server and client packages.
 
-Volunteers can contribute in this way regardless of any obstacles they have faced for a long time, like being physically handicapped. Along with imparting basic education to the young generation and children, quests will also address serious issues that need immediate attention.
+   ```powershell
+   npm install
+   npm install --prefix client
+   ```
 
-### 3. Reduced Inequalities
+4. Optionally provision the first administrator after setting `ADMIN_EMAIL` and an `ADMIN_PASSWORD` of at least 12 characters in `.env`.
 
-As a result of inequitable resource distribution, poverty has widened the gap between the wealthy and the poor. Because of inequality, poor people often face discrimination, stigma, and negative social stereotypes that limit their social participation, employment opportunities, and political support.
+   ```powershell
+   npm run seed:admin
+   ```
 
-With our application, we will assist those in need while preserving existing resources. In addition, instilling hope in them by informing them about the various schemes and opportunities offered by the government will encourage them to lead a better life. Participation in quests will also enliven social inequality. Having them publicly indulged will disintegrate the intersection of poverty and inequality.
+5. Start both development servers.
 
-## 🛠️ Tech Stack
+   ```powershell
+   npm run dev
+   ```
 
-- **Frontend:** React.js, Figma
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB
-- **API Testing:** Postman
-- **Deployment:** Render
+Open [http://localhost:3000](http://localhost:3000). The CRA proxy sends `/api/v1` requests to the Express server on port 8080.
 
-  <p align="center">
-  <img src="https://img.icons8.com/color/48/000000/react-native.png" alt="React.js" />
-  <img src="https://img.icons8.com/color/48/000000/figma--v1.png" alt="Figma" />
-  <img src="https://img.icons8.com/color/48/000000/nodejs.png" alt="Node.js" />
-  <img src="https://blog.amt.in/wp-content/uploads/2017/12/e16da876-c2fd-4eb8-ae72-4b193c534938-Edited.png" alt="Express.js" height="50px" />
-  <img src="https://img.icons8.com/color/48/000000/mongodb.png" alt="MongoDB" />
-  <img src="https://images.squarespace-cdn.com/content/v1/57c649658419c2380d1947be/1530749877859-XD498I2YH1GZ00CUYXQ5/Artboard+1.png?format=1500w" height="50px" alt="Postman" />
-  <img src="https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/gkq3dkkfkec8edd6fuay" alt="Render" height="50px"/>
-</p>
+## Google sign-in setup
 
-## 📗 Third-Party Libraries
+Create a Google OAuth **Web application** client in Google Cloud Console. Add the local and production web origins that will host the React client, then put the exact same client ID in both files:
 
-| Library | Description | Logo |
-| --- | --- | --- |
-| **@emotion/core** | CSS-in-JS library for styling React components | ![Emotion](https://img.shields.io/badge/emotion-CC6677?style=for-the-badge&logo=emotion&logoColor=white) |
-| **@emotion/react** | Core library for Emotion to use with React | ![Emotion](https://img.shields.io/badge/emotion-CC6677?style=for-the-badge&logo=emotion&logoColor=white) |
-| **@emotion/styled** | Styled components for Emotion | ![Emotion](https://img.shields.io/badge/emotion-CC6677?style=for-the-badge&logo=emotion&logoColor=white) |
-| **@reduxjs/toolkit** | Standard way to write Redux logic | ![Redux](https://img.shields.io/badge/redux_toolkit-764ABC?style=for-the-badge&logo=redux&logoColor=white) |
-| **@testing-library/jest-dom** | Custom jest matchers for asserting on DOM nodes | ![Testing Library](https://img.shields.io/badge/testing_library-000000?style=for-the-badge&logo=testing-library&logoColor=white) |
-| **@testing-library/react** | Simple and complete React DOM testing utilities | ![Testing Library](https://img.shields.io/badge/testing_library-000000?style=for-the-badge&logo=testing-library&logoColor=white) |
-| **@testing-library/user-event** | Fire events to simulate user interactions | ![Testing Library](https://img.shields.io/badge/testing_library-000000?style=for-the-badge&logo=testing-library&logoColor=white) |
-| **axios** | Promise-based HTTP client for making API requests | ![Axios](https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white) |
-| **moment** | Parse, validate, manipulate, and display dates in JavaScript | ![Moment.js](https://img.shields.io/badge/moment.js-3776AB?style=for-the-badge&logo=moment.js&logoColor=white) |
-| **react** | JavaScript library for building user interfaces | ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) |
-| **react-dom** | Serves as the entry point of the DOM-related rendering paths | ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) |
-| **react-icons** | Include popular icons in your React projects easily | ![React Icons](https://img.shields.io/badge/react_icons-000000?style=for-the-badge&logo=react-icons&logoColor=white) |
-| **react-redux** | Official React bindings for Redux | ![Redux](https://img.shields.io/badge/React_Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white) |
-| **react-router-dom** | DOM bindings for React Router | ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) |
-| **react-scripts** | Configuration and scripts for Create React App | ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) |
-| **react-spinners** | A collection of loading spinner components for React | ![React Spinners](https://img.shields.io/badge/react_spinners-000000?style=for-the-badge&logo=react&logoColor=white) |
-| **react-toastify** | React notification library to notify users | ![React Toastify](https://img.shields.io/badge/react_toastify-FFDD57?style=for-the-badge&logo=react-toastify&logoColor=black) |
-| **web-vitals** | Measure performance metrics in your application | ![Web Vitals](https://img.shields.io/badge/Web_Vitals-4CAF50?style=for-the-badge&logo=web-vitals&logoColor=white) |
+```ini
+# .env
+GOOGLE_CLIENT_ID=your-client-id.apps.googleusercontent.com
 
+# client/.env
+REACT_APP_GOOGLE_CLIENT_ID=your-client-id.apps.googleusercontent.com
+```
 
-## ✨ Features
+No Google client secret is used by this ID-token flow. If the client ID is not configured, the interface keeps email/password sign-in available and explains that Google is unavailable.
 
-### 🏠 Home
+For an existing email/password account, entering its current password before clicking Google securely links the account. This prevents an unverified, pre-created local account from being silently taken over through a matching Google email.
 
-#### Donor
+## Production build and run
 
-- **Add Inventory:** Create an inventory to donate books.
-  - Book Types: Elementary, JEE, NEET, Kids, Autobiographies, Architecture, History, Novels.
-  - *Note:* Donor email is required to donate books.
-- **Organization List:** View a list of organizations to which you have donated books, including email, phone, address, and date of donation.
-- **Donation List:** View details about all donations made, including book type, quantity, email, and date of donation.
+The repository deliberately does **not** keep a compiled `client/build` directory checked in. Always build the current client before starting the production server:
 
-#### Admin
+```powershell
+npm install
+npm install --prefix client
+npm run build
+$env:NODE_ENV = "production"
+npm start
+```
 
-- **Welcome Page:** Displays beautiful graphics with quotes and a link to the GitHub repository.
-- **Donor List:** List of all current donors with details about name, email, phone, and date of joining.
-- **Institute List:** Details about all institutes, including name, email, phone, and date of joining.
-- **Organization List:** Details about organizations, including name, email, phone, and date of joining.
-- **Note:** Admin has the power to delete any donor, institute, or organization.
+The Express server serves the fresh `client/build` output when it exists. In production, set `COOKIE_SECURE=true`, use HTTPS, and set `CLIENT_URL` to the actual client origin. When the frontend is served by this Express app, leave `REACT_APP_BASEURL=/api/v1` for same-origin API calls.
 
-#### Institute
+## Verification
 
-- **Organization List:** List of all organizations associated with the institute you are logged in as.
-- **Consumer List:** All NGOs/organizations that have been benefitted through the institute you are logged in as.
+```powershell
+npm test
+npm run build
+```
 
-#### Organization
+`npm test` covers canonical legacy-role mapping and the privacy-safe public user serializer. The build step compiles the React product surface.
 
-- **Inventory:** List of inventories with the option to add inventories.
-- **Donor List:** List of all donors associated with your organization.
-- **Institute List:** List of institutes associated with your organization.
+## API overview
 
-### 📊 Analytics
+All product APIs are under `/api/v1`.
 
-- **Book Types:** View in the form of cards all the book types, how many books are donated by donors in that type, how many books were given to NGOs and organizations in that type, and currently available books of that type.
-- **Recent Transactions:** View details of the last 5 transactions, including book type, quantity, donor email, time, and date, and whether the book was donated or given to NGOs (i.e., inventory type).
+| Area | Key endpoints |
+| --- | --- |
+| Auth | `POST /auth/register`, `/auth/login`, `/auth/google`, `/auth/logout`; `GET /auth/current-user` |
+| Donations | `GET/POST /donations`, `GET /donations/mine`, `GET/PATCH/DELETE /donations/:id` |
+| Claims | `POST /donations/:id/claim`, `GET /donations/claims/mine`, `GET /donations/incoming-claims`, `PATCH /donations/claims/:id/collect`, `POST /donations/claims/:id/cancel` |
+| Product data | `GET /dashboard`, `GET /notifications`, `PATCH /notifications/read-all` |
+| Health | `GET /health` |
 
-### 🚀 Navbar
-
-- **Logo and Name**
-- **Welcome Message:** Displays your name and badge that displays your role.
-- **Options:** View analytics and home.
-- **Logout Button**
-
-## 🎨 UI/UX Design
-
-- Modern design and aesthetic color palette.
-- Figma prototyping followed by extensive design practices.
-
-## 🔮 Future Plans
-
-- Add a dark mode.
-- Contact potential organizations that can benefit from this web app.
-- Implement the project at my college level followed by outer organizations.
-
-## 🚢 Deployment
-
-The project is deployed on Render.
-
-## 📷 Screenshots
-![Screenshot 2024-07-02 133749](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/a08c5689-10d2-43a4-abd1-0860e907ccbc)
-
-![Screenshot 2024-07-02 133802](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/4b1cd150-e0c8-48fe-85cd-8f0e99320016)
-
-![Screenshot 2024-07-02 133847](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/5dc4e558-cdaf-450f-bbdd-d63eb66a3155)
-
-![Screenshot 2024-07-02 133855](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/544d9f61-3324-44f5-944c-e312ea88c34a)
-
-![Screenshot 2024-07-02 133905](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/c049be56-4cfd-405f-971e-36ac198c4e1d)
-
-![Screenshot 2024-07-02 133802](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/dc6429e9-effc-48fa-8e0d-b73f713855d2)
-
-![Screenshot 2024-07-02 133919](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/03f7874c-b646-4c85-a80c-410e33370f64)
-
-![Screenshot 2024-07-02 133929](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/9c09a4b6-bfdc-4cb6-a080-c1508ad66fb3)
-
-![Screenshot 2024-07-02 133938](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/e2596c9d-81a1-4273-92ae-10de77cd2ebc)
-
-![Screenshot 2024-07-02 134010](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/db14248e-09a3-4bd9-a51a-a140f50457de)
-
-![Screenshot 2024-07-02 134018](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/6327e19d-c452-4c50-8ab2-960131354796)
-
-![Screenshot 2024-07-02 134025](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/1f7b4736-5dbd-4194-b4aa-ca8c5d2e5775)
-
-![Screenshot 2024-07-02 134136](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/6e80326c-0c64-4561-bea3-9678e0190e7f)
-
-![Screenshot 2024-07-02 134141](https://github.com/SprihaAnand/Rebooked2.0/assets/97617046/210a5152-9815-45f0-95c9-d62c9fc804b2)
-
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [CONTRIBUTING.md](https://github.com/SprihaAnand/Rebooked2.0/blob/main/CONTRIBUTING.md) for guidelines on how to get involved.
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/SprihaAnand/Rebooked2.0/blob/main/LICENSE.md) file for details.
-
-## 📞 Contact
-
-For any inquiries, please contact [sprihaanand@gmail.com](mailto:sprihaanand@gmail.com).
+Mutating cookie-authenticated endpoints verify a double-submit CSRF token. The React API clients attach it automatically.
